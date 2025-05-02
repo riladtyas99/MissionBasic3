@@ -1,0 +1,246 @@
+    /* Reset dan dasar */
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f5ef; /* krem muda */
+        color: #333;
+    }
+    a {
+        color: #666;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Navbar */
+    .navbar {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        padding: 0.5rem 1.5rem;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .navbar-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .navbar-logo img {
+        height: 40px;
+        width: auto;
+        display: block;
+    }
+    .navbar-logo-text {
+        font-weight: 700;
+        font-size: 1.5rem;
+        background: linear-gradient(90deg, #f9d423 0%, #ff7300 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        user-select: none;
+    }
+    .navbar-nav {
+        margin-left: auto;
+        display: flex;
+        gap: 1.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+    .navbar-nav a {
+        color: #555;
+        padding: 0.5rem 0;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.3s ease;
+    }
+    .navbar-nav a:hover {
+        border-bottom: 2px solid #4caf50;
+        color: #4caf50;
+    }
+
+    /* Container utama */
+    main {
+        max-width: 400px;
+        margin: 3rem auto;
+        background-color: #fff;
+        padding: 2.5rem 2rem 3rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    }
+
+    /* Judul dan deskripsi */
+    main h1 {
+        margin: 0 0 0.25rem 0;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #111;
+    }
+    main p.description {
+        margin: 0 0 1.75rem 0;
+        color: #777;
+        font-size: 0.95rem;
+    }
+
+    /* Form */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+        display: block;
+        color: #444;
+    }
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+        border: 1.8px solid #ccc;
+        border-radius: 6px;
+        transition: border-color 0.3s ease;
+    }
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+        outline: none;
+        border-color: #4caf50;
+        box-shadow: 0 0 5px #4caf50aa;
+    }
+
+    /* Password field dengan toggle */
+    .password-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    .password-wrapper input {
+        padding-right: 2.8rem;
+    }
+    .toggle-password {
+        position: absolute;
+        right: 0.75rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: #888;
+        user-select: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    .toggle-password:hover {
+        color: #4caf50;
+    }
+
+    /* Link lupa password */
+    .forgot-password {
+        font-size: 0.85rem;
+        color: #999;
+        text-align: right;
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+    }
+    .forgot-password a {
+        color: #999;
+    }
+    .forgot-password a:hover {
+        color: #4caf50;
+    }
+
+    /* Tombol */
+    .btn {
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 0.65rem 0;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        user-select: none;
+    }
+    .btn-login {
+        background-color: #4caf50;
+        color: white;
+    }
+    .btn-login:hover {
+        background-color: #3a9d3a;
+    }
+    .btn-register {
+        background-color: #a8d5a3;
+        color: #2f5d2f;
+    }
+    .btn-register:hover {
+        background-color: #8cc17a;
+    }
+
+    /* Garis pembatas dengan teks "atau" */
+    .separator {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 1.75rem 0 1.5rem 0;
+        color: #999;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+    .separator::before,
+    .separator::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #ddd;
+        margin: 0 0.75rem;
+    }
+
+    /* Tombol Google */
+    .btn-google {
+        background-color: white;
+        border: 1.5px solid #ddd;
+        color: #555;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 0;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        width: 100%;
+        user-select: none;
+    }
+    .btn-google:hover {
+        background-color: #f5f5f5;
+        border-color: #bbb;
+    }
+    .btn-google svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+        main {
+            margin: 2rem 1rem;
+            padding: 2rem 1.5rem 2.5rem;
+        }
+        .navbar-nav {
+            display: none; /* Sederhanakan navbar di mobile */
+        }
+    }

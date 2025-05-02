@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pendaftaran Akun - videobelajar</title>
+  <style>
+    /* Reset dan styling dasar */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffbea; /* warna latar sesuai gambar */
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+    }
+    nav img.logo {
+      height: 40px; /* ukuran logo videobelajar */
+    }
+
+    /* Container form */
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Judul dan subtitle */
+    h2 {
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 24px;
+      text-align: center;
+      color: #222;
+    }
+    p.subtitle {
+      text-align: center;
+      color: #666;
+      margin-top: 4px;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    /* Label dan input */
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    /* Grup input nomor hp dengan kode negara */
+    .phone-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .phone-group select {
+      width: 80px;
+      padding: 10px 8px 10px 40px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: white url('https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg') no-repeat 10px center;
+      background-size: 20px 14px;
+      font-size: 14px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+    }
+    .phone-group input[type="tel"] {
+      flex-grow: 1;
+    }
+
+    /* Tombol */
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: background-color 0.3s ease;
+    }
+    button.register {
+      background-color: #28a745; /* hijau cerah */
+      color: white;
+    }
+    button.register:hover {
+      background-color: #218838;
+    }
+    button.login {
+      background-color: #d4f7d4; /* hijau muda */
+      color: #28a745;
+    }
+    button.login:hover {
+      background-color: #b0e6b0;
+    }
+
+    /* Link lupa password */
+    .forgot-password {
+      text-align: right;
+      font-size: 13px;
+      margin-top: -12px;
+      margin-bottom: 18px;
+    }
+    .forgot-password a {
+      color: #666;
+      text-decoration: none;
+    }
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    /* Garis pembatas dengan tulisan "atau" */
+    .separator {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+      color: #999;
+      font-size: 14px;
+    }
+    .separator::before,
+    .separator::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+    }
+    .separator:not(:empty)::before {
+      margin-right: .75em;
+    }
+    .separator:not(:empty)::after {
+      margin-left: .75em;
+    }
+
+    /* Tombol daftar dengan Google */
+    .google-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      background-color: white;
+      transition: background-color 0.3s ease;
+    }
+    .google-btn:hover {
+      background-color: #f7f7f7;
+    }
+    .google-btn img {
+      height: 20px;
+      width: 20px;
+    }
+
+    /* Icon sembunyikan/tampilkan password */
+    .password-wrapper {
+      position: relative;
+    }
+    .password-wrapper input {
+      padding-right: 36px;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+    .toggle-password:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar dengan logo videobelajar -->
+  <nav>
+    <img src="Logo.jpg" alt="videobelajar logo" class="logo" />
+  </nav>
+
+  <!-- Form pendaftaran -->
+  <div class="container">
+    <h2>Pendaftaran Akun</h2>
+    <p class="subtitle">Yuk, daftarkan akunmu sekarang juga!</p>
+
+    <form>
+      <!-- Nama Lengkap -->
+      <label for="fullname">Nama Lengkap <span style="color: red;">*</span></label>
+      <input type="text" id="fullname" name="fullname" required />
+
+      <!-- Email -->
+      <label for="email">E-Mail <span style="color: red;">*</span></label>
+      <input type="email" id="email" name="email" required />
+
+      <!-- Nomor HP dengan kode negara -->
+      <label for="phone">No. Hp <span style="color: red;">*</span></label>
+      <div class="phone-group">
+        <select id="country-code" name="country-code" class="indonesia" aria-label="Kode Negara">
+          <option value="+62" selected>+62</option>
+          <!-- Bisa ditambahkan opsi negara lain -->
+        </select>
+        <input type="tel" id="phone" name="phone" required placeholder="Masukkan nomor HP" />
+      </div>
+
+      <!-- Kata Sandi -->
+      <label for="password">Kata Sandi <span style="color: red;">*</span></label>
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" required />
+        <img src="vektorhide.png" alt="Toggle Password" class="toggle-password" id="togglePassword1" />
+      </div>
+
+      <!-- Konfirmasi Kata Sandi -->
+      <label for="confirm-password">Konfirmasi Kata Sandi <span style="color: red;">*</span></label>
+      <div class="password-wrapper">
+        <input type="password" id="confirm-password" name="confirm-password" required />
+        <img src="vektorhide.png" alt="Toggle Password" class="toggle-password" id="togglePassword2" />
+      </div>
+
+      <!-- Link lupa password -->
+      <div class="forgot-password">
+        <a href="#">Lupa Password?</a>
+      </div>
+
+      <!-- Tombol Daftar -->
+      <button type="submit" class="register">Daftar</button>
+
+      <!-- Tombol Masuk -->
+      <button type="button" class="login" onclick="location.href='#'">Masuk</button>
+
+      <!-- Garis pembatas -->
+      <div class="separator">atau</div>
+
+      <!-- Tombol daftar dengan Google -->
+      <button type="button" class="google-btn" onclick="alert('Daftar dengan Google')">
+        <img src="logos_google-icon.png" alt="Google Logo" />
+        Daftar dengan Google
+      </button>
+    </form>
+  </div>
+
+  <script>
+    // Toggle visibility password
+    const togglePassword1 = document.getElementById('togglePassword1');
+    const password = document.getElementById('password');
+    togglePassword1.addEventListener('click', () => {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      // Bisa ganti ikon jika ingin
+    });
+
+    const togglePassword2 = document.getElementById('togglePassword2');
+    const confirmPassword = document.getElementById('confirm-password');
+    togglePassword2.addEventListener('click', () => {
+      const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+      confirmPassword.setAttribute('type', type);
+    });
+  </script>
+
+</body>
+</html>

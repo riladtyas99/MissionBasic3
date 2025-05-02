@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Masuk ke Akun</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Navigasi utama">
+        <div class="navbar-logo">
+            <img src="Logo.jpg" alt="Logo videobelajar" />
+        </div>
+    </nav>
+
+    <main>
+        <h1>Masuk ke Akun</h1>
+        <p class="description">Yuk, lanjutkan belajarmu di videobelajar.</p>
+        <form action="#" method="post" autocomplete="off" novalidate>
+            <div>
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required autocomplete="email" />
+            </div>
+            <div>
+                <label for="password">Kata Sandi *</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Masukkan kata sandi Anda" required autocomplete="current-password" />
+                    <button type="button" class="toggle-password" aria-label="Tampilkan atau sembunyikan kata sandi" title="Tampilkan/Sembunyikan kata sandi">
+                        &#128065;
+                    </button>
+                </div>
+            </div>
+            <div class="forgot-password">
+                <a href="#" tabindex="0">Lupa Password?</a>
+            </div>
+            <button type="submit" class="btn btn-login">Masuk</button>
+            <button type="button" class="btn btn-register">Daftar</button>
+            <div class="separator" aria-label="atau">atau</div>
+            <button type="button" class="btn-google" aria-label="Masuk dengan Google">
+                <svg viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path fill="#4285F4" d="M533.5 278.4c0-18.5-1.5-36.3-4.3-53.6H272v101.4h146.9c-6.3 34-25.3 62.8-54.1 82v68h87.4c51.1-47 80.3-116.3 80.3-197.8z"/>
+                    <path fill="#34A853" d="M272 544.3c73.6 0 135.4-24.3 180.5-65.9l-87.4-68c-24.3 16.3-55.3 26-93.1 26-71.5 0-132-48.3-153.6-113.1H29.7v70.9c45.1 89.1 137.7 150.1 242.3 150.1z"/>
+                    <path fill="#FBBC05" d="M118.4 323.3c-10.7-31.7-10.7-65.9 0-97.6v-70.9H29.7c-38.7 75.3-38.7 164.7 0 240l88.7-71.5z"/>
+                    <path fill="#EA4335" d="M272 107.7c39.9 0 75.7 13.7 103.9 40.7l77.9-77.9C405.7 24.3 343.9 0 272 0 167.4 0 74.8 60.9 29.7 150l88.7 70.9c21.6-64.8 82.1-113.2 153.6-113.2z"/>
+                </svg>
+                Masuk dengan Google
+            </button>
+        </form>
+    </main>
+
+    <script>
+        const togglePasswordBtn = document.querySelector('.toggle-password');
+        const passwordInput = document.getElementById('password');
+
+        togglePasswordBtn.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePasswordBtn.textContent = type === 'password' ? '\u{1F441}' : '\u{1F576}';
+        });
+    </script>
+</body>
+</html>

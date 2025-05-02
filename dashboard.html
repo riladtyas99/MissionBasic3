@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Halaman Beranda</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    nav.navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    .navbar .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar .menu {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar .menu li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s ease;
+      padding: 8px 12px;
+    }
+
+    .navbar .menu li a:hover,
+    .navbar .menu li a:focus {
+      color: #ff6600;
+      outline: none;
+    }
+
+    .navbar .avatar img {
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(70vh - 80px);
+      margin-top: 10px;
+    }
+
+    .hero {
+      width: 95%;
+      height: 500px;
+      background-image: url('content1.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 90%;
+    }
+
+    .overlay h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .overlay p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .overlay a.button {
+      background-color: #22c55e;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    .overlay a.button:hover {
+      background-color: #16a34a;
+    }
+
+    .below-hero-text {
+      margin-left: 100px;
+      margin-top: 30px;
+      color: #111827;
+    }
+
+    .below-hero-text h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .below-hero-text p {
+      font-size: 16px;
+      font-weight: 400;
+      color: #4B5563;
+    }
+
+    .tabs-container {
+      margin-left: 100px;
+      margin-top: 32px;
+    }
+
+    .tabs {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 48px;
+    }
+
+    .tab {
+      font-size: 16px;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .tab:hover,
+    .tab.active {
+      color: #f97316;
+    }
+
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background-color: #f97316;
+      border-radius: 2px;
+    }
+
+    .cards-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      padding: 100px;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .course-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .instructor {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 12px;
+      object-fit: cover;
+    }
+
+    .instructor-info {
+      font-size: 0.85rem;
+    }
+
+    .instructor-name {
+      font-weight: 600;
+    }
+
+    .instructor-position {
+      color: #888;
+      font-size: 0.8rem;
+    }
+
+    .rating-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+    }
+
+    .stars {
+      color: #f5c518;
+      font-size: 1.1rem;
+      margin-right: 8px;
+    }
+
+    .rating-value {
+      color: #444;
+      font-size: 0.9rem;
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #2ecc71;
+    }
+
+    @media (max-width: 1000px) {
+      .cards-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cards-wrapper {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+    }
+
+    .card1 {
+    width: 100%;
+    height: 440px;
+    background-image: url('bannercta.png');
+    background-size: cover;
+    background-position: center;
+    position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border-radius: 10px;
+  }
+
+  .content2 {
+    background-color: rgba(0, 0, 0, 0.5); /* overlay gelap agar teks terbaca */
+    padding: 30px 50px;
+    border-radius: 10px;
+    max-width: 700px;
+  }
+
+  .content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+  .subscribe-btn1 {
+    background-color: #FFC107; /* kuning */
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .subscribe-btn1:hover {
+    background-color: #e6ac00;
+  }
+
+  input[type="email"] {
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: none;
+    margin-right: 15px;
+    width: 300px;
+  }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="#"><img src="Logo.jpg" alt="Logo videobelajar" /></a>
+    </div>
+    <div class="navbar-right">
+      <ul class="menu">
+        <li><a href="#beranda">Kategori</a></li>
+      </ul>
+      <div class="avatar">
+        <a href="#"><img src="Avatar.png" alt="Avatar Pengguna" /></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-container">
+    <div class="hero">
+      <div class="overlay">
+        <h1>Revolusi Pembelajaran: Temukan Ilmu Baru melalui Platform Video Interaktif!</h1>
+        <p>Temukan ilmu baru yang menarik dan mendalam melalui koleksi video pembelajaran berkualitas tinggi.</p>
+        <a href="#" class="button">Temukan Video Course untuk Dipelajari!</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="below-hero-text">
+    <h2>Koleksi Video Pembelajaran Unggulan</h2>
+    <p>Jelajahi Dunia Pengetahuan Melalui Pilihan Kami!</p>
+  </div>
+
+  <div class="tabs-container">
+    <ul class="tabs">
+      <li class="tab active">Semua Kelas</li>
+      <li class="tab">Pemasaran</li>
+      <li class="tab">Desain</li>
+      <li class="tab">Pengembangan Diri</li>
+      <li class="tab">Bisnis</li>
+    </ul>
+  </div>
+
+  <div class="cards-wrapper">
+
+
+    <!-- Card  -->
+    <div class="card">
+      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Course Image" />
+      <div class="card-content">
+        <div class="title">Big 4 Auditor Financial Analyst</div>
+        <div class="description">Mulai transformasi dengan instruktur profesional...</div>
+        <div class="instructor">
+          <img class="avatar" src="Avatar2.png" alt="Jenna Ortega Avatar" />
+          <div class="instructor-info">
+            <div class="instructor-name">Jenna Ortega</div>
+            <div class="instructor-position">Senior Accountant di <strong>Gojek</strong></div>
+          </div>
+        </div>
+        <div class="rating-price-row">
+          <div class="rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="rating-value">2.5 (86)</div>
+          </div>
+          <div class="price">Rp 300K</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Course Image" />
+      <div class="card-content">
+        <div class="title">Big 4 Auditor Financial Analyst</div>
+        <div class="description">Mulai transformasi dengan instruktur profesional...</div>
+        <div class="instructor">
+          <img class="avatar" src="Avatar2.png" alt="Jenna Ortega Avatar" />
+          <div class="instructor-info">
+            <div class="instructor-name">Jenna Ortega</div>
+            <div class="instructor-position">Senior Accountant di <strong>Gojek</strong></div>
+          </div>
+        </div>
+        <div class="rating-price-row">
+          <div class="rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="rating-value">2.5 (86)</div>
+          </div>
+          <div class="price">Rp 300K</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Course Image" />
+      <div class="card-content">
+        <div class="title">Big 4 Auditor Financial Analyst</div>
+        <div class="description">Mulai transformasi dengan instruktur profesional...</div>
+        <div class="instructor">
+          <img class="avatar" src="Avatar2.png" alt="Jenna Ortega Avatar" />
+          <div class="instructor-info">
+            <div class="instructor-name">Jenna Ortega</div>
+            <div class="instructor-position">Senior Accountant di <strong>Gojek</strong></div>
+          </div>
+        </div>
+        <div class="rating-price-row">
+          <div class="rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="rating-value">2.5 (86)</div>
+          </div>
+          <div class="price">Rp 300K</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Course Image" />
+      <div class="card-content">
+        <div class="title">Big 4 Auditor Financial Analyst</div>
+        <div class="description">Mulai transformasi dengan instruktur profesional...</div>
+        <div class="instructor">
+          <img class="avatar" src="Avatar2.png" alt="Jenna Ortega Avatar" />
+          <div class="instructor-info">
+            <div class="instructor-name">Jenna Ortega</div>
+            <div class="instructor-position">Senior Accountant di <strong>Gojek</strong></div>
+          </div>
+        </div>
+        <div class="rating-price-row">
+          <div class="rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="rating-value">2.5 (86)</div>
+          </div>
+          <div class="price">Rp 300K</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Course Image" />
+      <div class="card-content">
+        <div class="title">Big 4 Auditor Financial Analyst</div>
+        <div class="description">Mulai transformasi dengan instruktur profesional...</div>
+        <div class="instructor">
+          <img class="avatar" src="Avatar2.png" alt="Jenna Ortega Avatar" />
+          <div class="instructor-info">
+            <div class="instructor-name">Jenna Ortega</div>
+            <div class="instructor-position">Senior Accountant di <strong>Gojek</strong></div>
+          </div>
+        </div>
+        <div class="rating-price-row">
+          <div class="rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="rating-value">2.5 (86)</div>
+          </div>
+          <div class="price">Rp 300K</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Course Image" />
+      <div class="card-content">
+        <div class="title">Big 4 Auditor Financial Analyst</div>
+        <div class="description">Mulai transformasi dengan instruktur profesional...</div>
+        <div class="instructor">
+          <img class="avatar" src="Avatar2.png" alt="Jenna Ortega Avatar" />
+          <div class="instructor-info">
+            <div class="instructor-name">Jenna Ortega</div>
+            <div class="instructor-position">Senior Accountant di <strong>Gojek</strong></div>
+          </div>
+        </div>
+        <div class="rating-price-row">
+          <div class="rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="rating-value">2.5 (86)</div>
+          </div>
+          <div class="price">Rp 300K</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Course Image" />
+      <div class="card-content">
+        <div class="title">Big 4 Auditor Financial Analyst</div>
+        <div class="description">Mulai transformasi dengan instruktur profesional...</div>
+        <div class="instructor">
+          <img class="avatar" src="Avatar2.png" alt="Jenna Ortega Avatar" />
+          <div class="instructor-info">
+            <div class="instructor-name">Jenna Ortega</div>
+            <div class="instructor-position">Senior Accountant di <strong>Gojek</strong></div>
+          </div>
+        </div>
+        <div class="rating-price-row">
+          <div class="rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="rating-value">2.5 (86)</div>
+          </div>
+          <div class="price">Rp 300K</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Course Image" />
+      <div class="card-content">
+        <div class="title">Big 4 Auditor Financial Analyst</div>
+        <div class="description">Mulai transformasi dengan instruktur profesional...</div>
+        <div class="instructor">
+          <img class="avatar" src="Avatar2.png" alt="Jenna Ortega Avatar" />
+          <div class="instructor-info">
+            <div class="instructor-name">Jenna Ortega</div>
+            <div class="instructor-position">Senior Accountant di <strong>Gojek</strong></div>
+          </div>
+        </div>
+        <div class="rating-price-row">
+          <div class="rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="rating-value">2.5 (86)</div>
+          </div>
+          <div class="price">Rp 300K</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Course Image" />
+      <div class="card-content">
+        <div class="title">Big 4 Auditor Financial Analyst</div>
+        <div class="description">Mulai transformasi dengan instruktur profesional...</div>
+        <div class="instructor">
+          <img class="avatar" src="Avatar2.png" alt="Jenna Ortega Avatar" />
+          <div class="instructor-info">
+            <div class="instructor-name">Jenna Ortega</div>
+            <div class="instructor-position">Senior Accountant di <strong>Gojek</strong></div>
+          </div>
+        </div>
+        <div class="rating-price-row">
+          <div class="rating">
+            <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="rating-value">2.5 (86)</div>
+          </div>
+          <div class="price">Rp 300K</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Content Subscribe -->
+<body>
+  <div class="card1">
+    <div class="content2">
+      <h2>Mau Belajar Lebih Banyak?</h2>
+      <p>Daftarkan dirimu untuk mendapatkan informasi terbaru dan penawaran spesial dari program-program terbaik hariesok.id</p>
+      <form>
+        <input type="email" placeholder="Masukkan Emailmu" required />
+        <button type="submit" class="subscribe-btn1">Subscribe</button>
+      </form>
+    </div>
+  </div>  
+</body>
+
+<body>
+  <footer style="background:#fff; padding:40px; font-family: Arial, sans-serif; color:#333;">
+    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; max-width:1200px; margin:auto;">
+      <!-- Bagian Logo dan Kontak -->
+      <div style="flex:1; min-width:250px; margin-bottom:20px;">
+        <img src="Logo.jpg" alt="videobelajar logo" style="width:150px; height:auto;"/>
+        <p style="font-weight:bold; margin-top:20px;">
+          Gali Potensi Anda Melalui Pembelajaran<br>
+          Video di hariesok.id!
+        </p>
+        <p>Jl. Usman Effendi No. 50 Lowokwaru, Malang</p>
+        <p>+62-877-7123-1234</p>
+      </div>
+  
+      <!-- Kategori -->
+      <div style="flex:1; min-width:150px; margin-bottom:20px;">
+        <h4 style="font-weight:bold; margin-bottom:10px;">Kategori</h4>
+        <ul style="list-style:none; padding:0; margin:0; color:#777;">
+          <li>Digital & Teknologi</li>
+          <li>Pemasaran</li>
+          <li>Manajemen Bisnis</li>
+          <li>Pengembangan Diri</li>
+          <li>Desain</li>
+        </ul>
+      </div>
+  
+      <!-- Perusahaan -->
+      <div style="flex:1; min-width:150px; margin-bottom:20px;">
+        <h4 style="font-weight:bold; margin-bottom:10px;">Perusahaan</h4>
+        <ul style="list-style:none; padding:0; margin:0; color:#777;">
+          <li>Tentang Kami</li>
+          <li>FAQ</li>
+          <li>Kebijakan Privasi</li>
+          <li>Ketentuan Layanan</li>
+          <li>Bantuan</li>
+        </ul>
+      </div>
+  
+      <!-- Komunitas -->
+      <div style="flex:1; min-width:150px; margin-bottom:20px;">
+        <h4 style="font-weight:bold; margin-bottom:10px;">Komunitas</h4>
+        <ul style="list-style:none; padding:0; margin:0; color:#777;">
+          <li>Tips Sukses</li>
+          <li>Blog</li>
+        </ul>
+      </div>
+    </div>
+  
+    <hr style= border-color:#eee;"/>
+  
+    <!-- Bagian copyright dan sosial media -->
+    <div style="max-width:1200px; margin:auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+      <p style="color:#999;">@2023 Gerobak Sayur All Rights Reserved.</p>
+      <div>
+        <a href="#" style="margin-right:15px; display:inline-block;">
+          <img src="linkedin.png" alt="LinkedIn" style="width:24px; height:24px;"/>
+        </a>
+        <a href="#" style="margin-right:15px; display:inline-block;">
+          <img src="Facebook.png" alt="Facebook" style="width:24px; height:24px;"/>
+        </a>
+        <a href="#" style="margin-right:15px; display:inline-block;">
+          <img src="Instagram.png" alt="Instagram" style="width:24px; height:24px;"/>
+        </a>
+        <a href="#" style="display:inline-block;">
+          <img src="twitter.png" alt="Twitter" style="width:24px; height:24px;"/>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
